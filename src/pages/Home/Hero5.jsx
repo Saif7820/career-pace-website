@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+import ReusableCarousel from "../../components/ReusableCarousel";
 import bgImage from "../../assets/images/bgImage.png";
 import Logo from "../../assets/images/logo.png";
 import icon1 from "../../assets/images/icon1.png";
@@ -7,29 +8,45 @@ import icon4 from "../../assets/images/icon4.png";
 
 import { FaRegCheckCircle, FaRocket, FaUsers, FaMapMarkedAlt } from "react-icons/fa";
 
+const cardsData = [
+  {
+    id: 1,
+    icon: <FaRocket size={34} className="opacity-95" />,
+    content: (
+      <div className="flex flex-col justify-center">
+        <h3 className="text-xl md:text-2xl font-bold leading-none mb-1 tracking-tight">100,000+</h3>
+        <p className="text-xs md:text-sm font-semibold opacity-90">Leads Generated</p>
+      </div>
+    ),
+    bg: icon1,
+    delay: 600,
+  },
+  {
+    id: 2,
+    icon: <FaUsers size={34} className="opacity-95" />,
+    content: (
+      <>
+        <h3 className="text-xl md:text-2xl font-bold tracking-tight">15+</h3>
+        <div className="h-10 w-px bg-white/40 mx-2"></div>
+        <div className="flex flex-col justify-center">
+          <p className="text-sm font-bold leading-none mb-1 tracking-wide">University</p>
+          <p className="text-sm font-bold leading-none tracking-wide">Partners</p>
+        </div>
+      </>
+    ),
+    bg: icon3,
+    delay: 700,
+  },
+  {
+    id: 3,
+    icon: <FaMapMarkedAlt size={34} className="opacity-95" />,
+    content: <p className="text-lg md:text-xl font-bold tracking-tight">Pan-India Reach</p>,
+    bg: icon4,
+    delay: 800,
+  },
+];
+
 const Hero5 = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef(null);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const cardWidth = scrollRef.current.children[0].offsetWidth;
-      const index = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(index);
-    }
-  };
-
-  const scrollToSlide = (index) => {
-    if (scrollRef.current && scrollRef.current.children[index]) {
-      scrollRef.current.children[index].scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
-  };
-
   return (
     <div className="relative w-full min-h-fit lg:min-h-screen py-8 lg:py-0 bg-white font-sans overflow-hidden flex flex-col justify-between">
       
@@ -103,61 +120,22 @@ const Hero5 = () => {
         </p>
 
         {/* CARDS */}
-        <div 
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-3 gap-4 lg:gap-6 w-full max-w-5xl overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-        >
-          
-          {/* Card 1 */}
-          <div 
-            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
-            style={{ backgroundImage: `url(${icon1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            data-aos="fade-up" data-aos-delay="600"
-          >
-            <FaRocket size={34} className="opacity-95" />
-            <div className="flex flex-col justify-center">
-              <h3 className="text-xl md:text-2xl font-bold leading-none mb-1 tracking-tight">100,000+</h3>
-              <p className="text-xs md:text-sm font-semibold opacity-90">Leads Generated</p>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div 
-            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
-            style={{ backgroundImage: `url(${icon3})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            data-aos="fade-up" data-aos-delay="700"
-          >
-            <FaUsers size={34} className="opacity-95" />
-            <h3 className="text-xl md:text-2xl font-bold tracking-tight">15+</h3>
-            <div className="h-10 w-px bg-white/40 mx-2"></div>
-            <div className="flex flex-col justify-center">
-              <p className="text-sm font-bold leading-none mb-1 tracking-wide">University</p>
-              <p className="text-sm font-bold leading-none tracking-wide">Partners</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div 
-            className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
-            style={{ backgroundImage: `url(${icon4})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            data-aos="fade-up" data-aos-delay="800"
-          >
-            <FaMapMarkedAlt size={34} className="opacity-95" />
-            <p className="text-lg md:text-xl font-bold tracking-tight">Pan-India Reach</p>
-          </div>
-          
-        </div>
-        {/* Mobile Swipe Indicator Dots */}
-        <div className="flex md:hidden justify-center items-center gap-2 mt-4">
-          {[0, 1, 2].map((idx) => (
-            <button 
-              key={idx} 
-              onClick={() => scrollToSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-            ></button>
-          ))}
+        <div className="w-full max-w-5xl">
+          <ReusableCarousel
+            items={cardsData}
+            desktopGridClass="md:grid md:grid-cols-3 gap-4 lg:gap-6"
+            renderItem={(item) => (
+              <div 
+                key={item.id}
+                className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-full hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
+                style={{ backgroundImage: `url(${item.bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                data-aos="fade-up" data-aos-delay={item.delay}
+              >
+                {item.icon}
+                {item.content}
+              </div>
+            )}
+          />
         </div>
       </div>
       

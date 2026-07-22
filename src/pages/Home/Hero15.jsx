@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+import ReusableCarousel from "../../components/ReusableCarousel";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import bgImage2 from "../../assets/images/bgImage2.png";
@@ -34,31 +35,6 @@ const brandLogos = [
 ];
 
 const Hero15 = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef(null);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-      if (scrollWidth > 0) {
-        const index = Math.round((scrollLeft / scrollWidth) * 2);
-        setActiveIndex(index);
-      }
-    }
-  };
-
-  const scrollToSlide = (index) => {
-    if (scrollRef.current) {
-      const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-      const targetScroll = (index / 2) * scrollWidth;
-      scrollRef.current.scrollTo({
-        left: targetScroll,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <div
       className="relative w-full py-10 md:py-20 px-4 md:px-10 overflow-hidden font-sans"
@@ -89,78 +65,26 @@ const Hero15 = () => {
           Trusted By Leading Brands
         </h1>
 
-        {/* 3. Brand Logos Grid */}
-        <div 
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="w-full max-w-5xl mb-14 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-        >
-          <div className="min-w-[600px] md:min-w-full flex flex-col gap-3 md:gap-5">
-            {/* Row 1 — 4 logos */}
-            <div className="grid grid-cols-4 gap-3 md:gap-5">
-            {brandLogos.slice(0, 4).map((brand, i) => (
+        {/* 3. Brand Logos Carousel */}
+        <div className="w-full max-w-5xl mb-10">
+          <ReusableCarousel
+            items={brandLogos}
+            desktopGridClass="md:grid md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5"
+            renderItem={(brand, i) => (
               <div
                 key={i}
-                className="bg-white rounded-xl md:rounded-2xl shadow-md md:shadow-lg border border-gray-100 flex items-center justify-center p-3 md:p-5 h-16 md:h-28 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-xl md:rounded-2xl shadow-md md:shadow-lg border border-gray-100 flex items-center justify-center p-4 h-24 md:h-28 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 w-full"
                 data-aos="zoom-in"
-                data-aos-delay={i * 100}
+                data-aos-delay={(i % 5) * 100}
               >
                 <img
                   src={brand.src}
                   alt={brand.alt}
-                  className="max-h-10 md:max-h-20 w-auto object-contain"
+                  className="max-h-12 md:max-h-16 w-auto object-contain"
                 />
               </div>
-            ))}
-            </div>
-
-            {/* Row 2 — 4 logos */}
-            <div className="grid grid-cols-4 gap-3 md:gap-5">
-            {brandLogos.slice(4, 8).map((brand, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center p-4 md:p-5 h-16 md:h-24 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
-                data-aos="zoom-in"
-                data-aos-delay={i * 100 + 400}
-              >
-                <img
-                  src={brand.src}
-                  alt={brand.alt}
-                  className="max-h-10 md:max-h-20 w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
-
-            {/* Row 3 — 5 logos */}
-            <div className="grid grid-cols-5 gap-3 md:gap-5">
-            {brandLogos.slice(8, 13).map((brand, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center p-4 md:p-5 h-16 md:h-24 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
-                data-aos="zoom-in"
-                data-aos-delay={i * 100 + 800}
-              >
-                <img
-                  src={brand.src}
-                  alt={brand.alt}
-                  className="max-h-16 md:max-h-20 w-auto object-contain"
-                />
-              </div>
-            ))}
-            </div>
-          </div>
-        </div>
-        {/* Mobile Swipe Indicator Dots */}
-        <div className="flex md:hidden justify-center items-center gap-2 -mt-6 mb-8 relative z-20">
-          {[0, 1, 2].map((idx) => (
-            <button 
-              key={idx} 
-              onClick={() => scrollToSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-            ></button>
-          ))}
+            )}
+          />
         </div>
 
         {/* 4. Bottom CTA */}
@@ -178,3 +102,4 @@ const Hero15 = () => {
 };
 
 export default Hero15;
+

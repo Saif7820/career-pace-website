@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+import ReusableCarousel from "../../components/ReusableCarousel";
 import logo from "../../assets/images/logo.png";
 import bgImage2 from "../../assets/images/bgImage2.png";
 
@@ -51,28 +52,6 @@ const services = [
 ];
 
 const Hero7 = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef(null);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const cardWidth = scrollRef.current.children[0].offsetWidth;
-      const index = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(index);
-    }
-  };
-
-  const scrollToSlide = (index) => {
-    if (scrollRef.current && scrollRef.current.children[index]) {
-      scrollRef.current.children[index].scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
-  };
-
   return (
     <div className="relative w-full py-8 md:py-24 px-3 sm:px-6 font-sans overflow-hidden" style={{ backgroundImage: `url(${bgImage2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       
@@ -94,50 +73,39 @@ const Hero7 = () => {
           End-to-end solutions to drive admissions, operations, and student <br className="hidden md:block" /> success for online universities.
         </p>
 
-        {/* Services Grid */}
-        <div 
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-8 gap-y-16 md:gap-y-24 mt-4 md:mt-20 pt-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {services.map((service, index) => (
-            <div 
-              key={service.id} 
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              className="bg-white rounded-2xl p-4 pt-10 sm:p-6 sm:pt-12 md:p-8 md:pt-16 shadow-[0_10px_40px_rgba(0,0,0,0.05)] relative border border-gray-100 flex flex-col items-center w-[80vw]  max-w-[320px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center"
-            >
-              {/* Floating Icon Circle WITH Background Color */}
-              <div className="absolute -top-10 md:-top-12 left-1/2 -translate-x-1/2">
-                {/* Outer White Border Circle */}
-                <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full shadow-lg flex items-center justify-center p-1.5 md:p-2">
-                   {/* Inner Colored Circle */}
-                   <div className={`w-full h-full rounded-full flex items-center justify-center shadow-inner ${service.iconBg}`}>
-                      <div className="scale-75 md:scale-100 flex items-center justify-center">{service.icon}</div>
-                   </div>
+        {/* Services Grid / Carousel */}
+        <div className="mt-4 md:mt-20 pt-6 md:pt-12">
+          <ReusableCarousel
+            items={services}
+            desktopGridClass="md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-8 gap-y-16 md:gap-y-24"
+            renderItem={(service, index) => (
+              <div 
+                key={service.id} 
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="bg-white rounded-2xl p-4 pt-10 sm:p-6 sm:pt-12 md:p-8 md:pt-16 shadow-[0_10px_40px_rgba(0,0,0,0.05)] relative border border-gray-100 flex flex-col items-center w-full h-full"
+              >
+                {/* Floating Icon Circle WITH Background Color */}
+                <div className="absolute -top-10 md:-top-12 left-1/2 -translate-x-1/2">
+                  {/* Outer White Border Circle */}
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full shadow-lg flex items-center justify-center p-1.5 md:p-2">
+                     {/* Inner Colored Circle */}
+                     <div className={`w-full h-full rounded-full flex items-center justify-center shadow-inner ${service.iconBg}`}>
+                        <div className="scale-75 md:scale-100 flex items-center justify-center">{service.icon}</div>
+                     </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Text Content */}
-              <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#1e2a5a] mb-2 sm:mb-3 md:mb-4 text-center break-words">
-                {service.title}
-              </h3>
-              <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium">
-                {service.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-        {/* Mobile Swipe Indicator Dots */}
-        <div className="flex md:hidden justify-center items-center gap-2 mt-4">
-          {[0, 1, 2, 3, 4, 5].map((idx) => (
-            <button 
-              key={idx} 
-              onClick={() => scrollToSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-            ></button>
-          ))}
+                {/* Text Content */}
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#1e2a5a] mb-2 sm:mb-3 md:mb-4 text-center break-words">
+                  {service.title}
+                </h3>
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium">
+                  {service.desc}
+                </p>
+              </div>
+            )}
+          />
         </div>
       </div>
     </div>
@@ -145,3 +113,4 @@ const Hero7 = () => {
 };
 
 export default Hero7;
+

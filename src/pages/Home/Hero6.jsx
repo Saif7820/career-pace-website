@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+import ReusableCarousel from "../../components/ReusableCarousel";
 import topicon from "../../assets/images/topicon.png";
 import laptop from "../../assets/images/laptop.png"; 
 import bgImage2 from "../../assets/images/bgImage2.png";
@@ -11,29 +12,45 @@ import {
   FaChartLine, FaHeadset, FaCog, FaBriefcase,
 } from "react-icons/fa";
 
+const statsCards = [
+  {
+    id: 1,
+    bg: icon1,
+    icon: <FaRocket size={30} />,
+    content: (
+      <div className="text-left">
+        <h3 className="text-xl font-bold">100,000+</h3>
+        <p className="text-sm">Leads Generated</p>
+      </div>
+    ),
+    delay: 600,
+  },
+  {
+    id: 2,
+    bg: icon2,
+    icon: <FaUsers size={30} />,
+    content: (
+      <>
+        <h3 className="text-xl font-bold">15+</h3>
+        <div className="h-8 w-px bg-white/40"></div>
+        <div className="text-left">
+          <p className="text-sm font-bold">University</p>
+          <p className="text-sm font-bold">Partners</p>
+        </div>
+      </>
+    ),
+    delay: 700,
+  },
+  {
+    id: 3,
+    bg: icon3,
+    icon: <FaMapMarkedAlt size={30} />,
+    content: <p className="text-lg font-bold">Pan-India Reach</p>,
+    delay: 800,
+  },
+];
+
 const Hero6 = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef(null);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const cardWidth = scrollRef.current.children[0].offsetWidth;
-      const index = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(index);
-    }
-  };
-
-  const scrollToSlide = (index) => {
-    if (scrollRef.current && scrollRef.current.children[index]) {
-      scrollRef.current.children[index].scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
-  };
-
   return (
     <div
       className="w-full py-10 md:py-16 px-4 md:px-10 text-center overflow-hidden bg-cover bg-center"
@@ -122,60 +139,27 @@ const Hero6 = () => {
         <span className="font-bold text-black">Pan-India reach</span>
       </p>
 
-      {/* 5. Stats Cards (Unchanged as requested) */}
-      <div 
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-      >
-        <div
-          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
-          style={{ backgroundImage: `url(${icon1})`, backgroundSize: "cover" }}
-          data-aos="fade-up" data-aos-delay="600"
-        >
-          <FaRocket size={30} />
-          <div className="text-left">
-            <h3 className="text-xl font-bold">100,000+</h3>
-            <p className="text-sm">Leads Generated</p>
-          </div>
-        </div>
-
-        <div
-          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
-          style={{ backgroundImage: `url(${icon2})`, backgroundSize: "cover" }}
-          data-aos="fade-up" data-aos-delay="700"
-        >
-          <FaUsers size={30} />
-          <h3 className="text-xl font-bold">15+</h3>
-          <div className="h-8 w-px bg-white/40"></div>
-          <div className="text-left">
-            <p className="text-sm font-bold">University</p>
-            <p className="text-sm font-bold">Partners</p>
-          </div>
-        </div>
-
-        <div
-          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
-          style={{ backgroundImage: `url(${icon3})`, backgroundSize: "cover" }}
-          data-aos="fade-up" data-aos-delay="800"
-        >
-          <FaMapMarkedAlt size={30} />
-          <p className="text-lg font-bold">Pan-India Reach</p>
-        </div>
-      </div>
-      {/* Mobile Swipe Indicator Dots */}
-      <div className="flex md:hidden justify-center items-center gap-2 mt-4 mb-4">
-        {[0, 1, 2].map((idx) => (
-          <button 
-            key={idx} 
-            onClick={() => scrollToSlide(idx)}
-            aria-label={`Go to slide ${idx + 1}`}
-            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-          ></button>
-        ))}
+      {/* 5. Stats Cards */}
+      <div className="max-w-5xl mx-auto">
+        <ReusableCarousel
+          items={statsCards}
+          desktopGridClass="md:grid md:grid-cols-3 gap-4 md:gap-6"
+          renderItem={(item) => (
+            <div
+              key={item.id}
+              className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-full hover:-translate-y-1 transition-all"
+              style={{ backgroundImage: `url(${item.bg})`, backgroundSize: "cover" }}
+              data-aos="fade-up" data-aos-delay={item.delay}
+            >
+              {item.icon}
+              {item.content}
+            </div>
+          )}
+        />
       </div>
     </div>
   );
 };
 
 export default Hero6;
+

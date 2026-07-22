@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+import ReusableCarousel from "../../components/ReusableCarousel";
 import logo from "../../assets/images/logo.png";
 import bgImage from "../../assets/images/bgImage.png";
 
@@ -41,28 +42,6 @@ const stats = [
 ];
 
 const Hero2 = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef(null);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const cardWidth = scrollRef.current.children[0].offsetWidth;
-      const index = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(index);
-    }
-  };
-
-  const scrollToSlide = (index) => {
-    if (scrollRef.current && scrollRef.current.children[index]) {
-      scrollRef.current.children[index].scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
-  };
-
   return (
     <div className="w-full relative bg-white font-sans overflow-hidden">
       
@@ -77,7 +56,7 @@ const Hero2 = () => {
       >
         {/* Top Content */}
         <div className="max-w-5xl w-full flex flex-col items-center mt-4 md:mt-10 z-10 text-center">
-          {/* Transparent Logo - mix-blend-multiply works best on white/light backgrounds */}
+          {/* Transparent Logo */}
           <img 
             src={logo} 
             alt="Logo" 
@@ -94,14 +73,12 @@ const Hero2 = () => {
           </p>
         </div>
 
-        {/* STATS CARDS SECTION - Slightly lowered with padding and margin adjustment */}
+        {/* STATS CARDS SECTION */}
         <div className="z-10 w-full max-w-6xl mx-auto px-2 md:px-6 mt-24 lg:mt-auto relative pb-6 md:pb-10"> 
-          <div 
-            ref={scrollRef}
-            onScroll={handleScroll}
-            className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {stats.map((item) => (
+          <ReusableCarousel
+            items={stats}
+            desktopGridClass="md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+            renderItem={(item) => (
               <div
                 key={item.id}
                 data-aos="zoom-in"
@@ -111,7 +88,7 @@ const Hero2 = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="relative overflow-hidden shrink-0 md:shrink snap-center w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 h-[150px] md:h-[160px] p-5 text-white shadow-xl 
+                className="relative overflow-hidden w-full h-[150px] md:h-[160px] p-5 text-white shadow-xl 
                            hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col items-center justify-center rounded-2xl border border-white/20"
               >
                 <div className="mb-2">{item.icon}</div>
@@ -126,19 +103,8 @@ const Hero2 = () => {
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-          {/* Mobile Swipe Indicator Dots */}
-          <div className="flex md:hidden justify-center items-center gap-2 mt-4 mb-2">
-            {[0, 1, 2, 3].map((idx) => (
-              <button 
-                key={idx} 
-                onClick={() => scrollToSlide(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-              ></button>
-            ))}
-          </div>
+            )}
+          />
         </div>
       </div>
 
@@ -155,3 +121,4 @@ const Hero2 = () => {
 };
 
 export default Hero2;
+
