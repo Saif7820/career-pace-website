@@ -34,7 +34,7 @@ const ReusableCarousel = ({
   return (
     <div className={`w-full ${className}`}>
       {/* Mobile Slider (< md breakpoint) */}
-      <div className="block md:hidden w-full px-4 py-2 overflow-hidden">
+      <div className="block md:hidden w-full px-4 py-2 overflow-visible">
         <Swiper
           centeredSlides={true}
           slidesPerView={1.2}
