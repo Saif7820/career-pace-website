@@ -75,7 +75,7 @@ const Hero3 = () => {
         className="max-w-7xl mx-auto flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {pillars.map((item, index) => (
-          <div key={item.id} data-aos="fade-up" data-aos-delay={index * 150} className="flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 w-[80vw]  max-w-[340px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center">
+          <div key={item.id} data-aos="fade-up" data-aos-delay={index * 150} className="flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 w-[80vw]  max-w-[340px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center">
             
             {/* TOP HALF: Background Image with Icon and Title */}
             <div 

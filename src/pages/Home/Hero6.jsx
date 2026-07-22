@@ -129,7 +129,7 @@ const Hero6 = () => {
         className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         <div
-          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
+          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
           style={{ backgroundImage: `url(${icon1})`, backgroundSize: "cover" }}
           data-aos="fade-up" data-aos-delay="600"
         >
@@ -141,7 +141,7 @@ const Hero6 = () => {
         </div>
 
         <div
-          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
+          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
           style={{ backgroundImage: `url(${icon2})`, backgroundSize: "cover" }}
           data-aos="fade-up" data-aos-delay="700"
         >
@@ -155,7 +155,7 @@ const Hero6 = () => {
         </div>
 
         <div
-          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
+          className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw]  max-w-[300px] md:w-full md:max-w-none md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 transition-all"
           style={{ backgroundImage: `url(${icon3})`, backgroundSize: "cover" }}
           data-aos="fade-up" data-aos-delay="800"
         >
