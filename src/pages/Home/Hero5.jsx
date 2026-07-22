@@ -111,7 +111,7 @@ const Hero5 = () => {
           
           {/* Card 1 */}
           <div 
-            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
+            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] min-w-[260px] max-w-[300px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
             style={{ backgroundImage: `url(${icon1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             data-aos="fade-up" data-aos-delay="600"
           >
@@ -124,7 +124,7 @@ const Hero5 = () => {
 
           {/* Card 2 */}
           <div 
-            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
+            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] min-w-[260px] max-w-[300px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
             style={{ backgroundImage: `url(${icon3})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             data-aos="fade-up" data-aos-delay="700"
           >
@@ -139,7 +139,7 @@ const Hero5 = () => {
 
           {/* Card 3 */}
           <div 
-            className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
+            className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] min-w-[260px] max-w-[300px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
             style={{ backgroundImage: `url(${icon4})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             data-aos="fade-up" data-aos-delay="800"
           >

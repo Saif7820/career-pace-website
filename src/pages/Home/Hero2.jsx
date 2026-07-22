@@ -111,7 +111,7 @@ const Hero2 = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="relative overflow-hidden shrink-0 md:shrink snap-center w-[80vw] max-w-[300px] md:w-full h-[150px] md:h-[160px] p-5 text-white shadow-xl 
+                className="relative overflow-hidden shrink-0 md:shrink snap-center w-[80vw] min-w-[260px] max-w-[300px] md:w-full md:min-w-0 h-[150px] md:h-[160px] p-5 text-white shadow-xl 
                            hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col items-center justify-center rounded-2xl border border-white/20"
               >
                 <div className="mb-2">{item.icon}</div>
