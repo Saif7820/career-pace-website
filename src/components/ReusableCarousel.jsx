@@ -8,13 +8,12 @@ import 'swiper/css/pagination';
 /**
  * ReusableCarousel Component
  * 
- * Configured so that:
- * - Loads with the center slide as active slide by default (initialSlide = Math.floor(items.length / 2))
- * - centeredSlides: true
- * - Displays ~15–20% of previous slide on left & next slide on right
- * - Active center slide scale: 1 (100% opacity), side slides scale: 0.92 (60% opacity)
- * - Fully responsive across mobile, tablet, and desktop viewports with smooth transitions
- * - Clickable pagination dots below
+ * Supports smooth, bidirectional swiping (left and right) across all viewports.
+ * Fixes right-swipe unresponsiveness via:
+ * - loopAdditionalSlides={3} for full bidirectional loop cloning
+ * - grabCursor={true}, simulateTouch={true}, allowTouchMove={true}
+ * - autoplay with disableOnInteraction={true} and pauseOnMouseEnter={true}
+ * - touch-action: pan-y
  */
 const ReusableCarousel = ({
   items,
@@ -26,7 +25,6 @@ const ReusableCarousel = ({
 }) => {
   if (!items || items.length === 0) return null;
 
-  // Calculate default center slide index
   const defaultInitialSlide = Math.floor(items.length / 2);
 
   return (
@@ -34,13 +32,24 @@ const ReusableCarousel = ({
       <Swiper
         initialSlide={defaultInitialSlide}
         centeredSlides={true}
-        loop={loop && items.length > 1}
+        loop={loop && items.length > 2}
+        loopAdditionalSlides={3}
+        grabCursor={true}
+        simulateTouch={true}
+        allowTouchMove={true}
+        touchRatio={1}
+        touchAngle={45}
+        touchStartPreventDefault={false}
         pagination={{
           clickable: true,
         }}
         autoplay={
           autoplay && items.length > 1
-            ? { delay: autoplayDelay, disableOnInteraction: false }
+            ? {
+                delay: autoplayDelay,
+                disableOnInteraction: true,
+                pauseOnMouseEnter: true,
+              }
             : false
         }
         breakpoints={{
@@ -62,7 +71,7 @@ const ReusableCarousel = ({
           }
         }}
         modules={[Pagination, Autoplay]}
-        className="reusable-swiper w-full"
+        className="reusable-swiper w-full select-none"
       >
         {items.map((item, index) => (
           <SwiperSlide key={index} className="flex justify-center items-stretch h-auto">
