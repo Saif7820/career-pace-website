@@ -6,12 +6,12 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 px-6 md:px-16 py-8 md:py-14 mt-0">
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
 
         {/* Company Info */}
-        <div className="col-span-2 md:col-span-1 mb-2 md:mb-0">
-          <img src={logo} alt="logo" className="h-10 md:h-14 object-contain mb-3 md:mb-5" />
-          <p className="hidden md:block text-sm leading-6 text-gray-400">
+        <div className="col-span-2 lg:col-span-1 mb-2 lg:mb-0">
+          <img src={logo} alt="logo" className="h-10 lg:h-14 object-contain mb-3 lg:mb-5" />
+          <p className="hidden lg:block text-sm leading-6 text-gray-400">
             Career PACE Edutech Pvt Ltd is powering the future of online
             universities by building complete growth ecosystems for digital education.
           </p>
@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="col-span-2 md:col-span-1 border-t border-gray-800 pt-4 md:border-none md:pt-0">
+        <div className="col-span-2 lg:col-span-1 border-t border-gray-800 pt-4 lg:border-none lg:pt-0">
           <h2 className="text-white text-base md:text-lg font-semibold mb-3 md:mb-5">Contact</h2>
           <div className="space-y-2 text-sm text-gray-300">
             <p>📧 info@careerpace.org</p>

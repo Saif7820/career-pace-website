@@ -17,13 +17,15 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full shadow-md px-6 md:px-12 py-2 flex items-center justify-between bg-white sticky top-0 z-50">
+    <nav className="w-full shadow-md px-4 sm:px-6 lg:px-12 py-3 flex items-center justify-between bg-white sticky top-0 z-50">
 
       {/* 🔥 Logo */}
-      <img src={logo} alt="logo" className="h-10 md:h-12 object-contain" />
+      <NavLink to="/" className="shrink-0">
+        <img src={logo} alt="logo" className="h-9 sm:h-10 lg:h-12 object-contain" />
+      </NavLink>
 
       {/* 🔥 Desktop Links */}
-      <div className="hidden md:flex items-center gap-10 text-lg font-semibold">
+      <div className="hidden lg:flex items-center gap-4 xl:gap-8 text-base xl:text-lg font-semibold">
         {navLinks.map((link, index) => (
           <NavLink
             key={index}
@@ -33,7 +35,7 @@ const Navbar = () => {
                 isActive
                   ? "text-[#1e2a5a] font-bold"
                   : "text-black hover:text-[#1e2a5a]"
-              } transition`
+              } transition whitespace-nowrap`
             }
           >
             {link.name}
@@ -44,24 +46,24 @@ const Navbar = () => {
       {/* 🔥 Desktop Button */}
       <NavLink
         to="/contact"
-        className="hidden md:block bg-[#b43238] text-white px-6 py-2 rounded-xl text-lg font-medium hover:bg-[#9a2a2f] transition"
+        className="hidden lg:inline-block bg-[#b43238] text-white px-5 py-2 rounded-xl text-base xl:text-lg font-medium hover:bg-[#9a2a2f] transition whitespace-nowrap shrink-0"
       >
         Contact Us
       </NavLink>
 
-      {/* 🔥 Mobile Menu Icon */}
+      {/* 🔥 Mobile / Tablet Icon */}
       <div
-        className="md:hidden text-2xl cursor-pointer z-[60] relative"
+        className="lg:hidden text-2xl cursor-pointer z-[60] relative p-1"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      {/* 🔥 Mobile Menu */}
+      {/* 🔥 Mobile / Tablet Menu */}
       <div
-        className={`absolute top-0 left-0 w-full bg-white shadow-md flex flex-col items-center gap-6 py-10 transform transition-all duration-300 ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
-        } md:hidden`}
+        className={`absolute top-0 left-0 w-full bg-white shadow-xl flex flex-col items-center gap-6 py-10 transform transition-all duration-300 ${
+          isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+        } lg:hidden z-50`}
       >
         {navLinks.map((link, index) => (
           <NavLink
@@ -69,10 +71,10 @@ const Navbar = () => {
             to={link.path}
             onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
-              `text-lg ${
+              `text-lg font-medium ${
                 isActive
                   ? "text-[#1e2a5a] font-bold"
-                  : "text-black"
+                  : "text-gray-800 hover:text-[#1e2a5a]"
               }`
             }
           >
@@ -84,7 +86,7 @@ const Navbar = () => {
         <NavLink
           to="/contact"
           onClick={() => setIsOpen(false)}
-          className="bg-[#b43238] text-white px-6 py-2 rounded-xl text-lg font-medium hover:bg-[#9a2a2f] transition"
+          className="bg-[#b43238] text-white px-8 py-2.5 rounded-xl text-lg font-medium hover:bg-[#9a2a2f] transition mt-2 shadow-md"
         >
           Contact Us
         </NavLink>
