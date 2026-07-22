@@ -72,9 +72,9 @@ const Hero3 = () => {
               style={{ 
                 backgroundImage: `url(${item.bgImage})`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                backgroundPosition: 'center top'
               }}
-              className="relative h-48 md:h-64 p-6 md:p-8 flex flex-col items-center justify-center text-center text-white"
+              className="relative h-56 sm:h-64 p-6 md:p-8 flex flex-col items-center justify-center text-center text-white"
             >
               {/* Overlay to make text pop */}
               <div className="absolute inset-0 bg-black/10"></div>

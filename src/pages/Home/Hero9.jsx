@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import bgImage from "../../assets/images/bgImage.png"; // आपकी नई बैकग्राउंड इमेज
 
@@ -50,14 +51,14 @@ const Hero9 = () => {
           </div>
 
           {/* Buttons Group */}
-          <div className="flex flex-wrap gap-4 mt-8" data-aos="fade-up" data-aos-delay="300">
-            <a href="/partners" className="bg-[#b43238] hover:bg-[#9a2a2f] text-white font-bold py-3 px-6 md:px-8 rounded-lg shadow-lg transition-transform hover:scale-105 inline-block">
+          <div className="flex flex-wrap gap-3 md:gap-4 mt-8" data-aos="fade-up" data-aos-delay="300">
+            <Link to="/partners" className="bg-[#b43238] hover:bg-[#9a2a2f] text-white font-bold py-2.5 px-6 md:px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 text-sm md:text-base inline-block">
               Become Our Exclusive Partner
-            </a>
+            </Link>
 
-            <a href="/ecosystem" className="bg-[#483a8e] hover:bg-[#392e71] text-white font-bold py-3 px-6 md:px-8 rounded-lg shadow-lg transition-transform hover:scale-105 inline-block">
+            <Link to="/ecosystem" className="bg-[#483a8e] hover:bg-[#392e71] text-white font-bold py-2.5 px-6 md:px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 text-sm md:text-base inline-block">
               Explore Our Ecosystem
-            </a>
+            </Link>
           </div>
         </div>
       </div>

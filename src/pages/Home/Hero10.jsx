@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import { FaChartLine, FaCogs, FaUsers, FaChartBar } from 'react-icons/fa';
 import bgImage2 from '../../assets/images/bgImage2.png';
@@ -98,9 +99,9 @@ const Hero10 = () => {
         <p className="text-xl md:text-3xl font-bold text-gray-800 mb-6 md:mb-8">
           Let's work together to transform higher education!
         </p>
-        <a href="/contact" className="bg-[#b43238] hover:bg-[#9a2a2f] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-bold shadow-lg transition-transform transform hover:scale-105 active:scale-95 text-base md:text-lg inline-block">
+        <Link to="/contact" className="bg-[#b43238] hover:bg-[#9a2a2f] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-bold shadow-lg transition-transform transform hover:scale-105 active:scale-95 text-base md:text-lg inline-block">
           Get in Touch
-        </a>
+        </Link>
       </div>
     </div>
   );

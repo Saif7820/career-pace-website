@@ -43,7 +43,7 @@ const Hero6 = () => {
       </p>
 
       {/* 3. CENTER SECTION - Laptop with Circle and Arrows */}
-      <div className="relative flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 mb-20 max-w-7xl mx-auto">
+      <div className="relative flex flex-col md:flex-row justify-center items-center gap-6 md:gap-20 mb-10 md:mb-20 max-w-7xl mx-auto">
         
         {/* SVG Arrows Background (Desktop Only) */}
         <div className="absolute inset-0 hidden md:flex justify-center items-center pointer-events-none">
@@ -58,7 +58,7 @@ const Hero6 = () => {
         </div>
 
         {/* LEFT SIDE - Features */}
-        <div className="flex flex-col gap-12 md:text-right z-20">
+        <div className="flex flex-col gap-4 md:gap-12 md:text-right z-20">
           {[
             { icon: <FaRocket />, text: "Lead Generation", color: "bg-[#e11d48]", pos: "md:translate-x-12" },
             { icon: <FaCog />, text: "Operations & Retention", color: "bg-[#3b82f6]", pos: "md:translate-x-0" },
@@ -74,12 +74,12 @@ const Hero6 = () => {
         </div>
 
         {/* CENTER - Laptop inside Circle */}
-        <div className="relative z-10 flex justify-center items-center" data-aos="zoom-in" data-aos-delay="300">
+        <div className="relative z-10 flex justify-center items-center my-4 md:my-0" data-aos="zoom-in" data-aos-delay="300">
           {/* Decorative Glow */}
-          <div className="absolute w-[350px] h-[350px] md:w-[550px] md:h-[550px] bg-blue-100/50 rounded-full blur-3xl -z-10"></div>
+          <div className="absolute w-[240px] h-[240px] md:w-[550px] md:h-[550px] bg-blue-100/50 rounded-full blur-3xl -z-10"></div>
           
           {/* Circle Container - object-contain ensures no cropping */}
-          <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full bg-white shadow-2xl border-4 border-blue-100 flex items-center justify-center p-8 md:p-12 relative z-20 overflow-hidden">
+          <div className="w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] rounded-full bg-white shadow-2xl border-4 border-blue-100 flex items-center justify-center p-4 md:p-12 relative z-20 overflow-hidden">
             <img
               src={laptop}
               alt="laptop"
@@ -89,7 +89,7 @@ const Hero6 = () => {
         </div>
 
         {/* RIGHT SIDE - Features */}
-        <div className="flex flex-col gap-12 md:text-left z-20">
+        <div className="flex flex-col gap-4 md:gap-12 md:text-left z-20">
           {[
             { icon: <FaUserGraduate />, text: "Student Enrollment", color: "bg-[#f59e0b]", pos: "md:-translate-x-12" },
             { icon: <FaChartLine />, text: "Academic Management", color: "bg-[#6d28d9]", pos: "md:-translate-x-0" },

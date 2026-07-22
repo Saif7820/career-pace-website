@@ -108,6 +108,7 @@
 
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import hero1 from '../../assets/images/hero1.png';
 import hero2 from '../../assets/images/hero5.png';
@@ -215,13 +216,13 @@ const Hero = () => {
                 {slides[currentSlide].description}
               </p>
               
-              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mt-2">
-                <a href="/partners" className="bg-gradient-to-b from-[#cc4334] to-[#a32b1f] hover:from-[#b03527] hover:to-[#8c2217] text-white px-5 sm:px-8 py-2 sm:py-3.5 rounded-md font-medium text-sm sm:text-lg transition-all shadow-md flex items-center justify-center border border-[#9a261a] active:scale-95 inline-block text-center">
+              <div className="flex flex-wrap items-center gap-3 md:gap-4 mt-2">
+                <Link to="/partners" className="bg-[#b43238] hover:bg-[#9a2a2f] text-white font-bold py-2.5 px-6 md:px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 text-sm md:text-base inline-block text-center">
                   Become Our Exclusive Partner
-                </a>
-                <a href="/ecosystem" className="bg-white hover:bg-gray-50 text-[#232d69] px-5 sm:px-8 py-2 sm:py-3.5 rounded-md font-medium text-sm sm:text-lg transition-all shadow-md flex items-center justify-center border border-gray-200 active:scale-95 inline-block text-center">
+                </Link>
+                <Link to="/ecosystem" className="bg-[#483a8e] hover:bg-[#392e71] text-white font-bold py-2.5 px-6 md:px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 text-sm md:text-base inline-block text-center">
                   Explore Our Ecosystem
-                </a>
+                </Link>
               </div>
             </motion.div>
           </AnimatePresence>

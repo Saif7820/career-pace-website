@@ -44,7 +44,7 @@ const Hero8 = () => {
       </p>
 
       {/* 3. CENTER SECTION */}
-      <div className="relative flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 mb-20 max-w-7xl mx-auto">
+      <div className="relative flex flex-col md:flex-row justify-center items-center gap-6 md:gap-20 mb-10 md:mb-20 max-w-7xl mx-auto">
         
         {/* SVG Arrows Background */}
         <div className="absolute inset-0 hidden md:flex justify-center items-center pointer-events-none">
@@ -57,7 +57,7 @@ const Hero8 = () => {
         </div>
 
         {/* LEFT SIDE - Features */}
-        <div className="flex flex-col gap-10 md:text-right z-20">
+        <div className="flex flex-col gap-4 md:gap-10 md:text-right z-20">
           {[
             { icon: <FaRocket />, text: "Lead Generation", color: "bg-[#e11d48]", pos: "md:translate-x-12" },
             { icon: <FaCog />, text: "Operations & Retention", color: "bg-[#3b82f6]", pos: "md:translate-x-0" },
@@ -73,13 +73,13 @@ const Hero8 = () => {
         </div>
 
         {/* CENTER - Laptop Circle */}
-        <div className="relative z-10 flex justify-center items-center" data-aos="zoom-in" data-aos-delay="300">
-          <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full bg-white shadow-2xl border border-blue-100 flex items-center justify-center p-6 md:p-10 relative z-20">
+        <div className="relative z-10 flex justify-center items-center my-4 md:my-0" data-aos="zoom-in" data-aos-delay="300">
+          <div className="w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] rounded-full bg-white shadow-2xl border border-blue-100 flex items-center justify-center p-4 md:p-10 relative z-20">
             
             {/* TopIcon centered on top border */}
-            <div className="absolute -top-10 md:-top-16 left-1/2 -translate-x-1/2 z-30">
-                <div className="bg-white p-2 rounded-full shadow-lg border-2 border-blue-200">
-                  <img src={topicon} alt="College Sangam" className="h-20 md:h-32 object-contain rounded-full" />
+            <div className="absolute -top-6 md:-top-16 left-1/2 -translate-x-1/2 z-30">
+                <div className="bg-white p-1 md:p-2 rounded-full shadow-lg border-2 border-blue-200">
+                  <img src={topicon} alt="College Sangam" className="h-14 sm:h-20 md:h-32 object-contain rounded-full" />
                 </div>
             </div>
 
@@ -92,7 +92,7 @@ const Hero8 = () => {
         </div>
 
         {/* RIGHT SIDE - Features */}
-        <div className="flex flex-col gap-10 md:text-left z-20">
+        <div className="flex flex-col gap-4 md:gap-10 md:text-left z-20">
           {[
             { icon: <FaUserGraduate />, text: "Student Enrollment", color: "bg-[#f59e0b]", pos: "md:-translate-x-12" },
             { icon: <FaChartLine />, text: "Academic Management", color: "bg-[#6d28d9]", pos: "md:-translate-x-0" },

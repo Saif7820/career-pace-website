@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import bgImage from "../../assets/images/bgImage.png";
 
@@ -87,9 +88,9 @@ const Hero14 = () => {
         <h3 className="text-xl md:text-3xl font-semibold text-[#1e2a5a] mb-6 tracking-tight">
           Ready to Elevate Your Online Education?
         </h3>
-          <a href="/contact" className="bg-[#b43238] hover:bg-[#9a2a2f] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-bold shadow-lg transition-transform transform hover:scale-105 active:scale-95 text-base md:text-lg inline-block">
+          <Link to="/contact" className="bg-[#b43238] hover:bg-[#9a2a2f] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-bold shadow-lg transition-transform transform hover:scale-105 active:scale-95 text-base md:text-lg inline-block">
             Get in Touch
-          </a>
+          </Link>
       </div>
     </div>
   );
