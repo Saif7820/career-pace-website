@@ -80,7 +80,7 @@ const Hero10 = () => {
         className="relative z-10 flex md:grid md:grid-cols-2 gap-6 md:gap-8 w-full max-w-6xl overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {features.map((item, i) => (
-          <div key={i} className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 hover:-translate-y-1 transition-transform duration-300 w-[80vw] min-w-[260px] max-w-[340px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center text-center sm:text-left" data-aos="fade-up" data-aos-delay={i * 150 + 200}>
+          <div key={i} className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 hover:-translate-y-1 transition-transform duration-300 w-[80vw]  max-w-[340px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center text-center sm:text-left" data-aos="fade-up" data-aos-delay={i * 150 + 200}>
             
             <div className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full border-[4px] md:border-[6px] ${item.borderColor} flex items-center justify-center`}>
               <div className={`${item.bgColor} w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center text-white shadow-md`}>

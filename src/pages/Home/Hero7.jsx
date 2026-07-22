@@ -105,7 +105,7 @@ const Hero7 = () => {
               key={service.id} 
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="bg-white rounded-2xl p-4 pt-10 sm:p-6 sm:pt-12 md:p-8 md:pt-16 shadow-[0_10px_40px_rgba(0,0,0,0.05)] relative border border-gray-100 flex flex-col items-center w-[80vw] min-w-[260px] max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center"
+              className="bg-white rounded-2xl p-4 pt-10 sm:p-6 sm:pt-12 md:p-8 md:pt-16 shadow-[0_10px_40px_rgba(0,0,0,0.05)] relative border border-gray-100 flex flex-col items-center w-[80vw]  max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center"
             >
               {/* Floating Icon Circle WITH Background Color */}
               <div className="absolute -top-10 md:-top-12 left-1/2 -translate-x-1/2">

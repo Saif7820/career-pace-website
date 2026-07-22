@@ -54,7 +54,7 @@ const Hero12 = () => {
       >
         
         {/* Phone Card */}
-        <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 flex flex-col items-center text-center h-56 sm:h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] min-w-[260px] max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="fade-up" data-aos-delay="400">
+        <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 flex flex-col items-center text-center h-56 sm:h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw]  max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="fade-up" data-aos-delay="400">
           <div className="bg-[#e93e45] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white mb-3 md:mb-6">
             <MdEmail size={26} />
           </div>
@@ -63,7 +63,7 @@ const Hero12 = () => {
         </div>
 
         {/* Call Card */}
-        <div className="bg-white rounded-3xl shadow-2xl p-5 sm:p-8 md:p-12 flex flex-col items-center text-center border-2 border-orange-50 h-60 sm:h-72 md:h-80 justify-center transform md:scale-105 z-10 w-[80vw] min-w-[260px] max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="zoom-in" data-aos-delay="400">
+        <div className="bg-white rounded-3xl shadow-2xl p-5 sm:p-8 md:p-12 flex flex-col items-center text-center border-2 border-orange-50 h-60 sm:h-72 md:h-80 justify-center transform md:scale-105 z-10 w-[80vw]  max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="zoom-in" data-aos-delay="400">
           <div className="bg-[#2ecc71] w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white mb-3 md:mb-6 shadow-lg shadow-green-100">
             <IoCall size={28} />
           </div>
@@ -72,7 +72,7 @@ const Hero12 = () => {
         </div>
 
         {/* Location Card */}
-        <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 flex flex-col items-center text-center h-56 sm:h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] min-w-[260px] max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="fade-left" data-aos-delay="500">
+        <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 flex flex-col items-center text-center h-56 sm:h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw]  max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="fade-left" data-aos-delay="500">
           <div className="bg-[#0e766d] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white mb-3 md:mb-6">
             <MdLocationOn size={26} />
           </div>
