@@ -4,7 +4,7 @@ import Hero5 from "./Home/Hero5";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="w-full bg-gray-50">
       <Hero5 />
       {/* Hero Section */}
       <section className="relative py-20 px-6 md:px-12 bg-white overflow-hidden">

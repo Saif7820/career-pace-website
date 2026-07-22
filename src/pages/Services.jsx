@@ -3,7 +3,7 @@ import Hero7 from "./Home/Hero7";
 
 const Services = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="w-full bg-white">
       <Hero7 />
     </div>
   );

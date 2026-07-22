@@ -4,7 +4,7 @@ import Hero15 from "./Home/Hero15";
 
 const Partners = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="w-full bg-white">
       <Hero14 />
       <Hero15 />
     </div>
