@@ -63,6 +63,16 @@ const Hero7 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   return (
     <div className="relative w-full py-12 md:py-24 px-6 font-sans overflow-hidden" style={{ backgroundImage: `url(${bgImage2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       
@@ -88,14 +98,14 @@ const Hero7 = () => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-8 gap-y-16 md:gap-y-24 mt-4 md:mt-20 pt-12 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-8 gap-y-16 md:gap-y-24 mt-4 md:mt-20 pt-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {services.map((service, index) => (
             <div 
               key={service.id} 
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="bg-white rounded-2xl p-6 pt-12 md:p-8 md:pt-16 shadow-[0_10px_40px_rgba(0,0,0,0.05)] relative border border-gray-100 flex flex-col items-center min-w-[260px] w-[85vw] md:w-auto shrink-0 snap-center"
+              className="bg-white rounded-2xl p-6 pt-12 md:p-8 md:pt-16 shadow-[0_10px_40px_rgba(0,0,0,0.05)] relative border border-gray-100 flex flex-col items-center w-[80vw] max-w-[320px] md:w-full shrink-0 md:shrink snap-center"
             >
               {/* Floating Icon Circle WITH Background Color */}
               <div className="absolute -top-10 md:-top-12 left-1/2 -translate-x-1/2">
@@ -121,10 +131,12 @@ const Hero7 = () => {
         {/* Mobile Swipe Indicator Dots */}
         <div className="flex md:hidden justify-center items-center gap-2 mt-4">
           {[0, 1, 2, 3, 4, 5].map((idx) => (
-            <div 
+            <button 
               key={idx} 
-              className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-            ></div>
+              onClick={() => scrollToSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+            ></button>
           ))}
         </div>
       </div>

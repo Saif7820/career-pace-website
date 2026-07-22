@@ -25,6 +25,16 @@ const Hero8 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   return (
     <div
       className="w-full py-10 md:py-16 px-4 md:px-10 text-center overflow-hidden bg-cover bg-center"
@@ -117,9 +127,9 @@ const Hero8 = () => {
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-4 md:gap-6 max-w-6xl mx-auto overflow-x-auto snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
-        <div className="flex items-center gap-4 text-white px-6 py-4 rounded-xl shadow-lg min-w-[260px] w-[85vw] md:w-auto shrink-0 snap-center bg-red-600" style={{ backgroundImage: `url(${icon1})`, backgroundSize: "cover" }} data-aos="fade-up" data-aos-delay="600">
+        <div className="flex items-center gap-4 text-white px-6 py-4 rounded-xl shadow-lg w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center bg-red-600" style={{ backgroundImage: `url(${icon1})`, backgroundSize: "cover" }} data-aos="fade-up" data-aos-delay="600">
           <FaRocket size={24} />
           <div className="text-left">
             <h3 className="text-2xl font-bold">100,000+</h3>
@@ -127,7 +137,7 @@ const Hero8 = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 text-white px-6 py-4 rounded-xl shadow-lg min-w-[260px] w-[85vw] md:w-auto shrink-0 snap-center bg-blue-900" style={{ backgroundImage: `url(${icon2})`, backgroundSize: "cover" }} data-aos="fade-up" data-aos-delay="700">
+        <div className="flex items-center gap-4 text-white px-6 py-4 rounded-xl shadow-lg w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center bg-blue-900" style={{ backgroundImage: `url(${icon2})`, backgroundSize: "cover" }} data-aos="fade-up" data-aos-delay="700">
           <FaUsers size={24} />
           <div className="text-left flex items-center gap-4">
              <h3 className="text-2xl font-bold">15+</h3>
@@ -136,7 +146,7 @@ const Hero8 = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 text-white px-6 py-4 rounded-xl shadow-lg min-w-[260px] w-[85vw] md:w-auto shrink-0 snap-center bg-purple-700" style={{ backgroundImage: `url(${icon3})`, backgroundSize: "cover" }} data-aos="fade-up" data-aos-delay="800">
+        <div className="flex items-center gap-4 text-white px-6 py-4 rounded-xl shadow-lg w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center bg-purple-700" style={{ backgroundImage: `url(${icon3})`, backgroundSize: "cover" }} data-aos="fade-up" data-aos-delay="800">
           <FaMapMarkedAlt size={24} />
           <p className="text-xl font-bold">Pan-India Reach</p>
         </div>
@@ -144,10 +154,12 @@ const Hero8 = () => {
       {/* Mobile Swipe Indicator Dots */}
       <div className="flex md:hidden justify-center items-center gap-2 mt-4 mb-4">
         {[0, 1, 2].map((idx) => (
-          <div 
+          <button 
             key={idx} 
-            className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-          ></div>
+            onClick={() => scrollToSlide(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+          ></button>
         ))}
       </div>
     </div>

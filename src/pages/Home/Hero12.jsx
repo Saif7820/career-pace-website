@@ -19,6 +19,16 @@ const Hero12 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   return (
     <div className="relative w-full font-sans py-10 md:py-16 px-6 flex flex-col items-center overflow-hidden" style={{ backgroundImage: `url(${bgImage2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       
@@ -40,11 +50,11 @@ const Hero12 = () => {
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
-        className="relative z-10 flex md:grid md:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl items-center mb-16 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="relative z-10 flex md:grid md:grid-cols-3 gap-6 md:gap-8 w-full max-w-5xl items-center mb-16 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         
-        {/* Email Card */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex flex-col items-center text-center h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 min-w-[280px] w-[85vw] md:w-auto shrink-0 snap-center" data-aos="fade-right" data-aos-delay="300">
+        {/* Phone Card */}
+        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex flex-col items-center text-center h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] max-w-[320px] md:w-full shrink-0 md:shrink snap-center" data-aos="fade-up" data-aos-delay="400">
           <div className="bg-[#e93e45] w-14 h-14 rounded-full flex items-center justify-center text-white mb-4 md:mb-6">
             <MdEmail size={30} />
           </div>
@@ -62,7 +72,7 @@ const Hero12 = () => {
         </div>
 
         {/* Location Card */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex flex-col items-center text-center h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 min-w-[280px] w-[85vw] md:w-auto shrink-0 snap-center" data-aos="fade-left" data-aos-delay="500">
+        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex flex-col items-center text-center h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] max-w-[320px] md:w-full shrink-0 md:shrink snap-center" data-aos="fade-left" data-aos-delay="500">
           <div className="bg-[#0e766d] w-14 h-14 rounded-full flex items-center justify-center text-white mb-4 md:mb-6">
             <MdLocationOn size={30} />
           </div>
@@ -74,10 +84,12 @@ const Hero12 = () => {
       {/* Mobile Swipe Indicator Dots */}
       <div className="flex md:hidden justify-center items-center gap-2 -mt-6 mb-8 relative z-20">
         {[0, 1, 2].map((idx) => (
-          <div 
+          <button 
             key={idx} 
-            className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-          ></div>
+            onClick={() => scrollToSlide(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+          ></button>
         ))}
       </div>
 

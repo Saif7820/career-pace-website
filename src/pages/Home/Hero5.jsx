@@ -20,6 +20,16 @@ const Hero5 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   return (
     <div className="relative w-full min-h-fit lg:min-h-screen py-8 lg:py-0 bg-white font-sans overflow-hidden flex flex-col justify-between">
       
@@ -96,12 +106,12 @@ const Hero5 = () => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex flex-nowrap md:flex-wrap justify-start md:justify-center items-stretch gap-4 lg:gap-6 w-full max-w-5xl overflow-x-auto snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex md:grid md:grid-cols-3 gap-4 lg:gap-6 w-full max-w-5xl overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           
           {/* Card 1 */}
           <div 
-            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[85vw] sm:w-auto min-w-[260px] shrink-0 snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
+            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
             style={{ backgroundImage: `url(${icon1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             data-aos="fade-up" data-aos-delay="600"
           >
@@ -114,7 +124,7 @@ const Hero5 = () => {
 
           {/* Card 2 */}
           <div 
-            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[85vw] sm:w-auto min-w-[260px] shrink-0 snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
+            className="flex items-center gap-3 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
             style={{ backgroundImage: `url(${icon3})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             data-aos="fade-up" data-aos-delay="700"
           >
@@ -129,7 +139,7 @@ const Hero5 = () => {
 
           {/* Card 3 */}
           <div 
-            className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[85vw] sm:w-auto min-w-[260px] shrink-0 snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
+            className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl w-[80vw] max-w-[300px] md:w-full shrink-0 md:shrink snap-center hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/20"
             style={{ backgroundImage: `url(${icon4})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             data-aos="fade-up" data-aos-delay="800"
           >
@@ -141,10 +151,12 @@ const Hero5 = () => {
         {/* Mobile Swipe Indicator Dots */}
         <div className="flex md:hidden justify-center items-center gap-2 mt-4">
           {[0, 1, 2].map((idx) => (
-            <div 
+            <button 
               key={idx} 
-              className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-            ></div>
+              onClick={() => scrollToSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+            ></button>
           ))}
         </div>
       </div>

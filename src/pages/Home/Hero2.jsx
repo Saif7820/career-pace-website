@@ -53,6 +53,16 @@ const Hero2 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   return (
     <div className="w-full relative bg-white font-sans overflow-hidden">
       
@@ -89,7 +99,7 @@ const Hero2 = () => {
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {stats.map((item) => (
               <div
@@ -101,7 +111,7 @@ const Hero2 = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="relative overflow-hidden shrink-0 snap-center w-[85vw] sm:w-full min-w-[260px] sm:min-w-0 h-[150px] md:h-[160px] p-5 text-white shadow-xl 
+                className="relative overflow-hidden shrink-0 md:shrink snap-center w-[80vw] max-w-[300px] md:w-full h-[150px] md:h-[160px] p-5 text-white shadow-xl 
                            hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col items-center justify-center rounded-2xl border border-white/20"
               >
                 <div className="mb-2">{item.icon}</div>
@@ -121,10 +131,12 @@ const Hero2 = () => {
           {/* Mobile Swipe Indicator Dots */}
           <div className="flex md:hidden justify-center items-center gap-2 mt-4 mb-2">
             {[0, 1, 2, 3].map((idx) => (
-              <div 
+              <button 
                 key={idx} 
-                className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-              ></div>
+                onClick={() => scrollToSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+              ></button>
             ))}
           </div>
         </div>

@@ -48,6 +48,17 @@ const Hero15 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current) {
+      const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+      const targetScroll = (index / 2) * scrollWidth;
+      scrollRef.current.scrollTo({
+        left: targetScroll,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div
       className="relative w-full py-10 md:py-20 px-4 md:px-10 overflow-hidden font-sans"
@@ -143,10 +154,12 @@ const Hero15 = () => {
         {/* Mobile Swipe Indicator Dots */}
         <div className="flex md:hidden justify-center items-center gap-2 -mt-6 mb-8 relative z-20">
           {[0, 1, 2].map((idx) => (
-            <div 
+            <button 
               key={idx} 
-              className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-            ></div>
+              onClick={() => scrollToSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+            ></button>
           ))}
         </div>
 

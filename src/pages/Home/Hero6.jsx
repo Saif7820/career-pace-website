@@ -24,6 +24,16 @@ const Hero6 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   return (
     <div
       className="w-full py-10 md:py-16 px-4 md:px-10 text-center overflow-hidden bg-cover bg-center"
@@ -116,7 +126,7 @@ const Hero6 = () => {
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-4 md:gap-6 max-w-5xl mx-auto overflow-x-auto snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 px-2 md:pb-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         <div
           className="flex items-center gap-4 text-white px-6 py-4 rounded-2xl shadow-xl min-w-[260px] w-[85vw] md:w-auto shrink-0 snap-center hover:-translate-y-1 transition-all"
@@ -156,10 +166,12 @@ const Hero6 = () => {
       {/* Mobile Swipe Indicator Dots */}
       <div className="flex md:hidden justify-center items-center gap-2 mt-4 mb-4">
         {[0, 1, 2].map((idx) => (
-          <div 
+          <button 
             key={idx} 
-            className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-          ></div>
+            onClick={() => scrollToSlide(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+          ></button>
         ))}
       </div>
     </div>

@@ -17,6 +17,16 @@ const Hero10 = () => {
     }
   };
 
+  const scrollToSlide = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   const features = [
     {
       title: "Proven Track Record",
@@ -67,10 +77,10 @@ const Hero10 = () => {
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
-        className="relative z-10 flex md:grid md:grid-cols-2 gap-6 md:gap-8 w-full max-w-6xl overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="relative z-10 flex md:grid md:grid-cols-2 gap-6 md:gap-8 w-full max-w-6xl overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 px-2 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {features.map((item, i) => (
-          <div key={i} className="bg-white p-6 md:p-8 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 hover:-translate-y-1 transition-transform duration-300 min-w-[280px] w-[85vw] md:w-auto shrink-0 snap-center text-center sm:text-left" data-aos="fade-up" data-aos-delay={i * 150 + 200}>
+          <div key={i} className="bg-white p-6 md:p-8 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 hover:-translate-y-1 transition-transform duration-300 w-[80vw] max-w-[340px] md:w-full shrink-0 md:shrink snap-center text-center sm:text-left" data-aos="fade-up" data-aos-delay={i * 150 + 200}>
             
             <div className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full border-[4px] md:border-[6px] ${item.borderColor} flex items-center justify-center`}>
               <div className={`${item.bgColor} w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center text-white shadow-md`}>
@@ -88,10 +98,12 @@ const Hero10 = () => {
       {/* Mobile Swipe Indicator Dots */}
       <div className="flex md:hidden justify-center items-center gap-2 mt-4 mb-2">
         {[0, 1, 2, 3].map((idx) => (
-          <div 
+          <button 
             key={idx} 
-            className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
-          ></div>
+            onClick={() => scrollToSlide(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === idx ? 'w-8 bg-[#1e2a5a]' : 'w-2.5 bg-gray-400 opacity-60'}`}
+          ></button>
         ))}
       </div>
 
