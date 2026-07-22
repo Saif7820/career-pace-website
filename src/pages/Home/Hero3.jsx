@@ -58,7 +58,7 @@ const Hero3 = () => {
   };
 
   return (
-    <div className="w-full bg-slate-50 py-12 md:py-20 px-6 md:px-12 font-sans">
+    <div className="w-full bg-slate-50 py-8 md:py-20 px-3 sm:px-6 md:px-12 font-sans overflow-x-hidden">
       
       {/* LOGO & HEADER */}
       <div className="text-center mb-16">
@@ -84,7 +84,7 @@ const Hero3 = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center top'
               }}
-              className="relative h-56 sm:h-64 p-6 md:p-8 flex flex-col items-center justify-center text-center text-white"
+              className="relative h-52 sm:h-64 p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center text-white"
             >
               {/* Overlay to make text pop */}
               <div className="absolute inset-0 bg-black/10"></div>
@@ -95,10 +95,10 @@ const Hero3 = () => {
               </div>
 
               {/* Title inside the image */}
-              <h3 className="relative z-10 text-2xl font-bold leading-tight px-4">
+              <h3 className="relative z-10 text-lg sm:text-2xl font-bold leading-snug px-2 break-words text-center">
                 {item.title}
                 {item.subTitle && (
-                   <span className="block text-[10px] mt-2 opacity-80 font-normal tracking-tighter">
+                   <span className="block text-[10px] sm:text-xs mt-1.5 opacity-90 font-normal tracking-tight">
                      {item.subTitle}
                    </span>
                 )}
@@ -113,8 +113,8 @@ const Hero3 = () => {
             </div>
 
             {/* BOTTOM HALF: White area for Paragraph */}
-            <div className="p-6 md:p-8 flex items-center justify-center text-center min-h-fit md:min-h-[150px]">
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">
+            <div className="p-4 sm:p-6 md:p-8 flex items-center justify-center text-center min-h-fit md:min-h-[150px]">
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
                 {item.description}
               </p>
             </div>

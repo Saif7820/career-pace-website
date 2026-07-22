@@ -54,30 +54,30 @@ const Hero12 = () => {
       >
         
         {/* Phone Card */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex flex-col items-center text-center h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] max-w-[320px] md:w-full shrink-0 md:shrink snap-center" data-aos="fade-up" data-aos-delay="400">
-          <div className="bg-[#e93e45] w-14 h-14 rounded-full flex items-center justify-center text-white mb-4 md:mb-6">
-            <MdEmail size={30} />
+        <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 flex flex-col items-center text-center h-56 sm:h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] min-w-[260px] max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="fade-up" data-aos-delay="400">
+          <div className="bg-[#e93e45] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white mb-3 md:mb-6">
+            <MdEmail size={26} />
           </div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">Email Us</h3>
-          <p className="text-gray-500 font-medium">info@careerpace.com</p>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1 md:mb-2">Email Us</h3>
+          <p className="text-gray-500 text-sm font-medium break-all">info@careerpace.com</p>
         </div>
 
-        {/* Call Card (Center - Icon color changed to Green) */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 flex flex-col items-center text-center border-2 border-orange-50 h-72 md:h-80 justify-center transform md:scale-105 z-10 min-w-[280px] w-[85vw] md:w-auto shrink-0 snap-center" data-aos="zoom-in" data-aos-delay="400">
-          <div className="bg-[#2ecc71] w-16 h-16 rounded-full flex items-center justify-center text-white mb-4 md:mb-6 shadow-lg shadow-green-100">
-            <IoCall size={32} />
+        {/* Call Card */}
+        <div className="bg-white rounded-3xl shadow-2xl p-5 sm:p-8 md:p-12 flex flex-col items-center text-center border-2 border-orange-50 h-60 sm:h-72 md:h-80 justify-center transform md:scale-105 z-10 w-[80vw] min-w-[260px] max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="zoom-in" data-aos-delay="400">
+          <div className="bg-[#2ecc71] w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white mb-3 md:mb-6 shadow-lg shadow-green-100">
+            <IoCall size={28} />
           </div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">Call Us</h3>
-          <p className="text-[#1e2a5a] text-xl font-bold">+91 1234567890</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1 md:mb-2">Call Us</h3>
+          <p className="text-[#1e2a5a] text-lg sm:text-xl font-bold">+91 1234567890</p>
         </div>
 
         {/* Location Card */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 flex flex-col items-center text-center h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] max-w-[320px] md:w-full shrink-0 md:shrink snap-center" data-aos="fade-left" data-aos-delay="500">
-          <div className="bg-[#0e766d] w-14 h-14 rounded-full flex items-center justify-center text-white mb-4 md:mb-6">
-            <MdLocationOn size={30} />
+        <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 flex flex-col items-center text-center h-56 sm:h-64 md:h-72 justify-center hover:-translate-y-1 transition-transform duration-300 w-[80vw] min-w-[260px] max-w-[320px] md:w-full md:min-w-0 shrink-0 md:shrink snap-center" data-aos="fade-left" data-aos-delay="500">
+          <div className="bg-[#0e766d] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white mb-3 md:mb-6">
+            <MdLocationOn size={26} />
           </div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">Our Location</h3>
-          <p className="text-gray-500 font-medium">New Delhi, India</p>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1 md:mb-2">Our Location</h3>
+          <p className="text-gray-500 text-sm font-medium">New Delhi, India</p>
         </div>
 
       </div>
