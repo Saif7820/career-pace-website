@@ -138,6 +138,11 @@ const slides = [
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const minSwipeDistance = 40;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -146,8 +151,47 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handleDragStart = (clientX) => {
+    setTouchEnd(null);
+    setTouchStart(clientX);
+    setIsDragging(true);
+  };
+
+  const handleDragMove = (clientX) => {
+    if (isDragging) {
+      setTouchEnd(clientX);
+    }
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging || touchStart === null || touchEnd === null) {
+      setIsDragging(false);
+      return;
+    }
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) {
+      // Swiped left -> next slide
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right -> prev slide
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    }
+    setIsDragging(false);
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
-    <div className="relative bg-white overflow-hidden min-h-[60vh] md:min-h-[85vh] flex items-center">
+    <div 
+      className="relative bg-white overflow-hidden min-h-[60vh] md:min-h-[85vh] flex items-center select-none cursor-grab active:cursor-grabbing"
+      onTouchStart={(e) => handleDragStart(e.targetTouches[0].clientX)}
+      onTouchMove={(e) => handleDragMove(e.targetTouches[0].clientX)}
+      onTouchEnd={handleDragEnd}
+      onMouseDown={(e) => handleDragStart(e.clientX)}
+      onMouseMove={(e) => handleDragMove(e.clientX)}
+      onMouseUp={handleDragEnd}
+      onMouseLeave={handleDragEnd}
+    >
       
       {/* Background Image Layer (Carousel) */}
       <div className="absolute top-0 right-0 w-full lg:w-[70%] h-full z-0 bg-gray-100">
@@ -160,15 +204,15 @@ const Hero = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
             alt={`Carousel slide ${currentSlide + 1}`} 
-            className="absolute inset-0 w-full h-full object-cover object-center lg:object-right"
+            className="absolute inset-0 w-full h-full object-cover object-center lg:object-right pointer-events-none"
           />
         </AnimatePresence>
         
         {/* Gradient overlays to blend the image into the white background */}
         {/* On mobile: more vertical gradient to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent lg:via-white/50 z-10 hidden lg:block"></div>
-        <div className="absolute inset-0 bg-white/85 sm:bg-white/70 lg:hidden z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent lg:via-white/50 z-10 hidden lg:block pointer-events-none"></div>
+        <div className="absolute inset-0 bg-white/85 sm:bg-white/70 lg:hidden z-10 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 pointer-events-none"></div>
         
         {/* Carousel Indicators (Dots) */}
         <div className="absolute bottom-[10%] lg:bottom-[25%] right-[5%] lg:right-[15%] flex gap-2 z-30">
@@ -176,7 +220,7 @@ const Hero = () => {
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${currentSlide === idx ? 'bg-[#232d69] w-8' : 'bg-[#232d69]/30 hover:bg-[#232d69]/60'}`}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-500 cursor-pointer ${currentSlide === idx ? 'bg-[#232d69] w-8' : 'bg-[#232d69]/30 hover:bg-[#232d69]/60'}`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}

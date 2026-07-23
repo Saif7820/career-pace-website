@@ -8,46 +8,53 @@ import 'swiper/css/pagination';
 /**
  * ReusableCarousel Component
  * 
- * Supports smooth, bidirectional swiping (left and right) across all viewports.
- * Fixes right-swipe unresponsiveness via:
- * - loopAdditionalSlides={3} for full bidirectional loop cloning
- * - grabCursor={true}, simulateTouch={true}, allowTouchMove={true}
- * - autoplay with disableOnInteraction={true} and pauseOnMouseEnter={true}
- * - touch-action: pan-y
+ * Provides smooth, reliable bidirectional swiping (left and right) on all devices.
+ * Uses `rewind={true}` to prevent Swiper's small-array slide-cloning lock when swiping right.
  */
 const ReusableCarousel = ({
   items,
   renderItem,
   autoplay = true,
   autoplayDelay = 3500,
-  loop = true,
   className = ""
 }) => {
   if (!items || items.length === 0) return null;
 
-  const defaultInitialSlide = Math.floor(items.length / 2);
+  // Duplicate items if count is small so Swiper's loop engine can clone slides seamlessly in both directions
+  const needsDuplication = items.length > 1 && items.length < 6;
+  const displayItems = needsDuplication ? [...items, ...items] : items;
 
   return (
     <div className={`w-full overflow-visible px-2 sm:px-4 ${className}`}>
       <Swiper
-        initialSlide={defaultInitialSlide}
+        initialSlide={0}
         centeredSlides={true}
-        loop={loop && items.length > 2}
-        loopAdditionalSlides={3}
+        loop={items.length > 1}
+        loopPreventsSliding={false}
         grabCursor={true}
         simulateTouch={true}
         allowTouchMove={true}
-        touchRatio={1}
+        touchRatio={1.2}
         touchAngle={45}
-        touchStartPreventDefault={false}
+        speed={450}
+        resistance={false}
+        observer={true}
+        observeParents={true}
         pagination={{
           clickable: true,
+          renderBullet: (index, className) => {
+            // If items were duplicated, only show bullets for original items count
+            if (needsDuplication && index >= items.length) {
+              return '';
+            }
+            return `<span class="${className}"></span>`;
+          }
         }}
         autoplay={
           autoplay && items.length > 1
             ? {
                 delay: autoplayDelay,
-                disableOnInteraction: true,
+                disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }
             : false
@@ -73,10 +80,10 @@ const ReusableCarousel = ({
         modules={[Pagination, Autoplay]}
         className="reusable-swiper w-full select-none"
       >
-        {items.map((item, index) => (
-          <SwiperSlide key={index} className="flex justify-center items-stretch h-auto">
+        {displayItems.map((item, index) => (
+          <SwiperSlide key={index} className="flex justify-center items-stretch h-auto cursor-grab active:cursor-grabbing">
             <div className="w-full h-full flex justify-center items-stretch">
-              {renderItem(item, index)}
+              {renderItem(item, index % items.length)}
             </div>
           </SwiperSlide>
         ))}

@@ -37,6 +37,10 @@ const Hero15 = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
 
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeftPos, setScrollLeftPos] = useState(0);
+
   const handleScroll = () => {
     if (scrollRef.current) {
       const scrollLeft = scrollRef.current.scrollLeft;
@@ -57,6 +61,25 @@ const Hero15 = () => {
         behavior: "smooth",
       });
     }
+  };
+
+  const handleMouseDown = (e) => {
+    if (!scrollRef.current) return;
+    setIsMouseDown(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeftPos(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeaveOrUp = () => {
+    setIsMouseDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isMouseDown || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeftPos - walk;
   };
 
   return (
@@ -93,7 +116,11 @@ const Hero15 = () => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="w-full max-w-5xl mb-14 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeaveOrUp}
+          onMouseUp={handleMouseLeaveOrUp}
+          onMouseMove={handleMouseMove}
+          className="w-full max-w-5xl mb-14 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden cursor-grab active:cursor-grabbing select-none"
         >
           <div className="min-w-[600px] md:min-w-full flex flex-col gap-3 md:gap-5">
             {/* Row 1 — 4 logos */}
