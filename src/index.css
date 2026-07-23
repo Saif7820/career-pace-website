@@ -41,8 +41,8 @@ html {
 .reusable-swiper {
   padding-left: 0 !important;
   padding-right: 0 !important;
-  padding-bottom: 3rem !important;
-  padding-top: 3rem !important;
+  padding-bottom: 2rem !important;
+  padding-top: 1.25rem !important;
   overflow: visible !important;
   touch-action: pan-y !important;
   user-select: none !important;
